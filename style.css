@@ -38,3 +38,6 @@ body{
   background-color: whitesmoke;
   box-shadow: 2px 2px rgba(0, 0, 0, 0.3)
 }
+#pokeImage{
+  width: 180px;
+}
