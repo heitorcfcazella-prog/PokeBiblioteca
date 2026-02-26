@@ -38,6 +38,20 @@ body{
   background-color: whitesmoke;
   box-shadow: 2px 2px rgba(0, 0, 0, 0.3)
 }
+.cardContent{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
 #pokeImage{
-  width: 180px;
+  width: 200px;
+}
+.pokeInfo{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+#pokeName{
+  text-align: center;
 }

@@ -12,15 +12,21 @@
   </div>
   <div id="inputDiv">
     <input type="text" id="input" placeholder="Insira o nome do Pokémon">
-    <button type="submit">Mostrar Card</button><br>
+    <button type="submit" onclick="buscarPokemon()">Mostrar Card</button><br>
   </div>
   <div id="mainArea">
-    <div class="card"><img src="" id="pokeImage"></div>
-    <div class="card"></div>
-    <div class="card"></div>  
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>  
+    <div class="card">
+      <h3 id="pokeName">Nome do pokemon</h3>
+      <div class="cardContent">
+        <img src="" id="pokeImage">
+        <div class="pokeInfo">
+          <p id="health"></p>
+          <p id="type">asdasda</p>
+          <p id="height">asdadasd</p>
+          <p id="weight">asdadasda</p>
+        </div>
+      </div>
+    </div>
   </div>
   
   <script src="script.js"></script>

@@ -1,6 +1,6 @@
 async function buscarPokemon() {
   try{
-    const resposta = await fetch('https://pokeapi.deno.dev/pokemon/pikachu');
+    const resposta = await fetch('https://pokeapi.deno.dev/pokemon/mewtwo');
     const dados = await resposta.json();
     console.log(dados);
 
