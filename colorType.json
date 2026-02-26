@@ -11,9 +11,9 @@
   "Grass": "#71C558",
   "Ground": "#CC9F4F",
   "Ice": "70CBD4",
-  "Normal": "AAB09F",
-  "Poison": "B468B7",
-  "Psychic": "E5709B",
+  "Normal": "#AAB09F",
+  "Poison": "#B468B7",
+  "Psychic": "#E5709B",
   "Rock": "#B2A061",
   "Steel": "#89A1B0",
   "Water": "#539AE2"
