@@ -1,9 +1,16 @@
 /*
+Feito:
 1. Importa JSON das cores dos tipos - OK
 2. Puxar JSON do pokemon solicitado
 3. Editar as informações da div a partir das informações recebidas
 4. Colocar na tela
 5. Editar posição a partir da adição de mais divs
+6. limitar a 9 cards não repetidos
+A fazer: 
+
+7. Implementar botão de deleteAll
+8. Implementar tradução de tipos (inglês => port)
+9. Ajustar interface e animações
 */
 
 import colorType from "./colorType.json" with { type: "json"};
@@ -47,12 +54,20 @@ async function buscarPokemon() {
       </div>
     </div>`
     // o .join(", ") é usado para unir todos os elementos de um array em uma string
+    
+    //Botões de delete
     const btnClose = card.querySelector(".btnCloseTab")
     btnClose.addEventListener("click", () =>{
       card.remove();
     });
-    container.prepend(card); //o .prepend insere elementos no inicio do elemento-pai, tornando-o o primeiro filho
 
+     container.prepend(card); //o .prepend insere elementos no inicio do elemento-pai, tornando-o o primeiro filho
+
+    //Limite a 9 cards
+    if(container.children.length >= 9){
+      container.lastChild.remove();
+    }
+    
     } catch (erro){
     console.error(erro);
   }
