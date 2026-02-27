@@ -1,23 +1,34 @@
 /*
 Feito:
-1. Importa JSON das cores dos tipos - OK
+1. Importa JSON das cores dos tipos
 2. Puxar JSON do pokemon solicitado
 3. Editar as informações da div a partir das informações recebidas
 4. Colocar na tela
 5. Editar posição a partir da adição de mais divs
 6. limitar a 9 cards não repetidos
+7. Impedir duplicados
 A fazer: 
 
-7. Implementar botão de deleteAll
-8. Implementar tradução de tipos (inglês => port)
-9. Ajustar interface e animações
+8. Implementar botão de deleteAll
+9. Implementar tradução de tipos (inglês => port)
+10. Ajustar interface e animações
 */
 
 import colorType from "./colorType.json" with { type: "json"};
 
+const pokemonsAtivos = new Set(); //cria um conjunto vazio (tem que ser fora para não ser zerado sempre que chamar um novo)
+
 async function buscarPokemon() {
   try{
     const pokemonName = document.getElementById("pokeInput").value.toLowerCase();
+
+
+    // verifica se está duplicado
+    if (pokemonsAtivos.has(pokemonName)){
+      alert("Esse pokémon já está na lista!");
+      return;
+    }
+
     const resposta1 = await fetch(`https://pokeapi.deno.dev/pokemon/${pokemonName}`);
     const resposta2 = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
 
@@ -27,12 +38,14 @@ async function buscarPokemon() {
     if(!resposta2.ok){
       throw new Error ("Pokémon não encontado na segunda API")
     }
-
+  
     const dadosGerais = await resposta1.json();
     const alturaEPeso = await resposta2.json();
     const container = document.getElementById("mainArea");
+    pokemonsAtivos.add(pokemonName); //adiciona o nome do pokemon na lista daqueles na página
 
-    const card = document.createElement("div"); //Cria um elemento div na constante card
+    const card = document.createElement("div"); //cria um elemento div na constante card
+
     card.classList.add("card"); //adiciona a classe card nessa div
 
     const tipoPrincipal = dadosGerais.types[0]; //No caso do pokémon ter dois tipos ele puxa só o primeiro para atribuir a cor do card
@@ -58,14 +71,19 @@ async function buscarPokemon() {
     //Botões de delete
     const btnClose = card.querySelector(".btnCloseTab")
     btnClose.addEventListener("click", () =>{
+      pokemonsAtivos.delete(pokemonName); //deleta o nome da lista
       card.remove();
     });
 
      container.prepend(card); //o .prepend insere elementos no inicio do elemento-pai, tornando-o o primeiro filho
 
-    //Limite a 9 cards
+    //Limite de 9 cards
     if(container.children.length >= 9){
-      container.lastChild.remove();
+      const ultimoCard = container.lastElementChild;
+      const nomeRemovido = ultimoCard.querySelector(".pokeName").textContent.toLowerCase();
+
+      pokemonsAtivos.delete(nomeRemovido);
+      ultimoCard.remove();
     }
     
     } catch (erro){
