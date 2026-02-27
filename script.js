@@ -33,7 +33,10 @@ async function buscarPokemon() {
     card.style.backgroundColor = cor;
 
     card.innerHTML = `
-    <h3 id="pokeName">${dadosGerais.name}</h3>
+    <div class="cardHeader">
+      <h3 class="pokeName">${dadosGerais.name}</h3>
+      <button class="btnCloseTab">X</button>
+    </div>
     <div class="cardContent">
       <img src="${dadosGerais.imageUrl}" id="pokeImage">
       <div class="pokeInfo">
@@ -44,7 +47,10 @@ async function buscarPokemon() {
       </div>
     </div>`
     // o .join(", ") é usado para unir todos os elementos de um array em uma string
-
+    const btnClose = card.querySelector(".btnCloseTab")
+    btnClose.addEventListener("click", () =>{
+      card.remove();
+    });
     container.prepend(card); //o .prepend insere elementos no inicio do elemento-pai, tornando-o o primeiro filho
 
     } catch (erro){

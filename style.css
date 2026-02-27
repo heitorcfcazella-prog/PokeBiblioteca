@@ -51,7 +51,21 @@ body{
   flex-direction: column;
   gap: 5px;
 }
-
-#pokeName{
+.pokeName{
   text-align: center;
+}
+.cardHeader {
+  position: relative;
+  text-align: center;
+}
+
+.btnCloseTab {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  font-weight: bold;
+  cursor: pointer;
 }
