@@ -15,7 +15,7 @@ A fazer:
 11. Implementação de melhor interface mobile
 */
 
-import colorType from "./colorType.json" with { type: "json"};
+import colorType from "../data/colorType.json" with { type: "json"};
 
 const pokemonsAtivos = new Set(); //cria um conjunto vazio (tem que ser fora para não ser zerado sempre que chamar um novo)
 
