@@ -8,14 +8,15 @@ Feito:
 6. limitar a 9 cards não repetidos
 7. Impedir duplicados
 8. Implementar botão de deleteAll
+9. Implementar tradução de tipos (inglês => port)
 A fazer: 
 
-9. Implementar tradução de tipos (inglês => port)
 10. Ajustar interface e animações
 11. Implementação de melhor interface mobile
 */
 
 import colorType from "../data/colorType.json" with { type: "json"};
+import typeTranslation from "../data/typeTranslation.json" with { type: "json"};
 
 const pokemonsAtivos = new Set(); //cria um conjunto vazio (tem que ser fora para não ser zerado sempre que chamar um novo)
 
@@ -53,6 +54,11 @@ async function buscarPokemon() {
     const cor = colorType[tipoPrincipal];
     card.style.backgroundColor = cor;
 
+    //Tradução do tipo
+    const tiposTraduzidos = dadosGerais.types.map(tipo => {
+      return typeTranslation[tipo] || tipo;
+    })
+
     card.innerHTML = `
       <div class="cardHeader">
         <h3 class="pokeName">${dadosGerais.name}</h3>
@@ -62,8 +68,8 @@ async function buscarPokemon() {
         <img src="${dadosGerais.imageUrl}" id="pokeImage">
         <div class="pokeInfo">
           <p>Vida: ${dadosGerais.stats.HP}</p>
-          <p>Tipo: ${dadosGerais.types.join(", ")}</p> 
-          <p>Altura: ${alturaEPeso.height / 10} metros</p>
+          <p>Tipo: ${tiposTraduzidos.join(", ")}</p> 
+          <p>Altura: ${alturaEPeso.height / 10} metro(s)</p>
           <p>Peso: ${alturaEPeso.weight / 10} kg</p>
         </div>
       </div>`
