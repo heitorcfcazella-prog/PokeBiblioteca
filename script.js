@@ -7,11 +7,12 @@ Feito:
 5. Editar posição a partir da adição de mais divs
 6. limitar a 9 cards não repetidos
 7. Impedir duplicados
+8. Implementar botão de deleteAll
 A fazer: 
 
-8. Implementar botão de deleteAll
 9. Implementar tradução de tipos (inglês => port)
 10. Ajustar interface e animações
+11. Implementação de melhor interface mobile
 */
 
 import colorType from "./colorType.json" with { type: "json"};
@@ -41,7 +42,7 @@ async function buscarPokemon() {
   
     const dadosGerais = await resposta1.json();
     const alturaEPeso = await resposta2.json();
-    const container = document.getElementById("mainArea");
+    const container = document.getElementById("cardsContainer");
     pokemonsAtivos.add(pokemonName); //adiciona o nome do pokemon na lista daqueles na página
 
     const card = document.createElement("div"); //cria um elemento div na constante card
@@ -53,19 +54,19 @@ async function buscarPokemon() {
     card.style.backgroundColor = cor;
 
     card.innerHTML = `
-    <div class="cardHeader">
-      <h3 class="pokeName">${dadosGerais.name}</h3>
-      <button class="btnCloseTab">X</button>
-    </div>
-    <div class="cardContent">
-      <img src="${dadosGerais.imageUrl}" id="pokeImage">
-      <div class="pokeInfo">
-        <p>Vida: ${dadosGerais.stats.HP}</p>
-        <p>Tipo: ${dadosGerais.types.join(", ")}</p> 
-        <p>Altura: ${alturaEPeso.height / 10} metros</p>
-        <p>Peso: ${alturaEPeso.weight / 10} kg</p>
+      <div class="cardHeader">
+        <h3 class="pokeName">${dadosGerais.name}</h3>
+        <button class="btnCloseTab">X</button>
       </div>
-    </div>`
+      <div class="cardContent">
+        <img src="${dadosGerais.imageUrl}" id="pokeImage">
+        <div class="pokeInfo">
+          <p>Vida: ${dadosGerais.stats.HP}</p>
+          <p>Tipo: ${dadosGerais.types.join(", ")}</p> 
+          <p>Altura: ${alturaEPeso.height / 10} metros</p>
+          <p>Peso: ${alturaEPeso.weight / 10} kg</p>
+        </div>
+      </div>`
     // o .join(", ") é usado para unir todos os elementos de um array em uma string
     
     //Botões de delete
@@ -73,6 +74,12 @@ async function buscarPokemon() {
     btnClose.addEventListener("click", () =>{
       pokemonsAtivos.delete(pokemonName); //deleta o nome da lista
       card.remove();
+    });
+
+    const btnCloseAll = document.getElementById("btnCloseAll");
+    btnCloseAll.addEventListener("click", () => {
+      container.innerHTML = "";
+      pokemonsAtivos.clear();
     });
 
      container.prepend(card); //o .prepend insere elementos no inicio do elemento-pai, tornando-o o primeiro filho

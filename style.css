@@ -20,14 +20,16 @@ body{
   width: 90vw;
   min-height: auto;
   border-radius: 30px;
-  display: grid;
-  flex-wrap: wrap;
-  gap: 15px;
-  grid-template-columns: repeat(3, 1fr);
   justify-content: center;
+  flex-wrap: wrap;
   margin: 0 auto;
   background-color: lightgray;
   box-shadow: 5px 5px rgba(0, 0, 0, 0.3);
+}
+#cardsContainer{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
 }
 .card{
   margin: 10px;
@@ -68,4 +70,12 @@ body{
   background: transparent;
   font-weight: bold;
   cursor: pointer;
+}
+
+#btnCloseAll{
+}
+.mainAreaHeader{
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 20px;
 }
