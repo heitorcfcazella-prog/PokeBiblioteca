@@ -74,7 +74,7 @@ async function buscarPokemon() {
         </div>
       </div>`
     // o .join(", ") é usado para unir todos os elementos de um array em uma string
-    
+
     //Botões de delete
     const btnClose = card.querySelector(".btnCloseTab")
     btnClose.addEventListener("click", () =>{
@@ -103,5 +103,21 @@ async function buscarPokemon() {
     console.error(erro);
   }
 }
+
+// Animação de entrada e saída da mainArea
+const mainArea = document.getElementById("mainArea");
+const btnAbrir = document.getElementById("mostrarCard");
+const btnCloseAll = document.getElementById("btnCloseAll");
+const container = document.getElementById("cardsContainer");
+
+btnAbrir.addEventListener("click", () => {
+  mainArea.classList.add("active");
+});
+
+btnCloseAll.addEventListener("click", () => {
+  container.innerHTML = "";
+  pokemonsAtivos.clear();
+  mainArea.classList.remove("active");
+});
 
 document.getElementById("mostrarCard").addEventListener("click", buscarPokemon);
