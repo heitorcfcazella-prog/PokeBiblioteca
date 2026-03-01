@@ -9,10 +9,10 @@ Feito:
 7. Impedir duplicados
 8. Implementar botão de deleteAll
 9. Implementar tradução de tipos (inglês => port)
+10. Implementação de melhor interface mobile
 A fazer: 
 
-10. Ajustar interface e animações
-11. Implementação de melhor interface mobile
+11. Ajustar interface e animações
 */
 
 import colorType from "../data/colorType.json" with { type: "json"};
