@@ -176,6 +176,7 @@ transition: transform 0.4s ease, opacity 0.4s ease;
 #btnCloseAll{
   display: block;
   margin: 0 auto;
+  margin-bottom: 20px;
   border: solid 3px red;
   border-radius: 30px;
   width: 80%;
