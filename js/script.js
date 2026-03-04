@@ -37,6 +37,22 @@ function mostrarErro(mensagem){
   }, 2500);
 }
 
+// Animação de entrada e saída da mainArea
+const mainArea = document.getElementById("mainArea");
+const btnAbrir = document.getElementById("mostrarCard");
+const btnCloseAll = document.getElementById("btnCloseAll");
+const container = document.getElementById("cardsContainer");
+
+btnAbrir.addEventListener("click", () => {
+  mainArea.classList.add("active");
+});
+
+btnCloseAll.addEventListener("click", () => {
+  container.innerHTML = "";
+  pokemonsAtivos.clear();
+  mainArea.classList.remove("active");
+});
+
 async function buscarPokemon() {
   try{
     const pokemonName = document.getElementById("pokeInput").value.toLowerCase();
@@ -97,12 +113,10 @@ async function buscarPokemon() {
     btnClose.addEventListener("click", () =>{
       pokemonsAtivos.delete(pokemonName); //deleta o nome da lista
       card.remove();
-    });
 
-    const btnCloseAll = document.getElementById("btnCloseAll");
-    btnCloseAll.addEventListener("click", () => {
-      container.innerHTML = "";
-      pokemonsAtivos.clear();
+      if(container.children.length === 0){
+        mainArea.classList.remove("active");
+      }
     });
 
      container.prepend(card); //o .prepend insere elementos no inicio do elemento-pai, tornando-o o primeiro filho
@@ -120,21 +134,4 @@ async function buscarPokemon() {
     console.error(erro);
   }
 }
-
-// Animação de entrada e saída da mainArea
-const mainArea = document.getElementById("mainArea");
-const btnAbrir = document.getElementById("mostrarCard");
-const btnCloseAll = document.getElementById("btnCloseAll");
-const container = document.getElementById("cardsContainer");
-
-btnAbrir.addEventListener("click", () => {
-  mainArea.classList.add("active");
-});
-
-btnCloseAll.addEventListener("click", () => {
-  container.innerHTML = "";
-  pokemonsAtivos.clear();
-  mainArea.classList.remove("active");
-});
-
 document.getElementById("mostrarCard").addEventListener("click", buscarPokemon);
