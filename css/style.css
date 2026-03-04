@@ -87,7 +87,7 @@ h1{
   transition: 0.3s;
 }
 #pokeInput:hover{
-  border-bottom: solid 3px blue;
+  border: solid 3px blue;
 }
 #mostrarCard{
   border: solid 3px blue;
