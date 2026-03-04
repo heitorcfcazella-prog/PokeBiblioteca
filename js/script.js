@@ -98,7 +98,7 @@ async function buscarPokemon() {
         <button class="btnCloseTab">X</button>
       </div>
       <div class="cardContent">
-        <img src="${dadosGerais.imageUrl}" id="pokeImage">
+        <img src="${dadosGerais.imageUrl}" class="pokeImage">
         <div class="pokeInfo">
           <p>Vida: ${dadosGerais.stats.HP}</p>
           <p>Tipo: ${tiposTraduzidos.join(", ")}</p> 
