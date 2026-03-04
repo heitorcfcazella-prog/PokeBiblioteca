@@ -35,6 +35,31 @@ h1{
   z-index: 10;
   color: whitesmoke;
 }
+#errorMessage{
+  width: 90%;
+  max-width: 500px;
+  margin: 0 auto 15px auto;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.95);
+  color: #ff2c2c;
+  font-weight: bold;
+  text-align: center;
+  overflow: hidden;
+
+  transform: translateX(-120%);
+  opacity: 0;
+
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+#errorMessage.show{
+  transform: translateX(0);
+  opacity: 1;
+}
+#errorMessage.hide{
+  opacity: 0;
+  transform: translateX(-120%);
+}
 #header{
   display: flex;
   justify-content: center;

@@ -20,6 +20,23 @@ import typeTranslation from "../data/typeTranslation.json" with { type: "json"};
 
 const pokemonsAtivos = new Set(); //cria um conjunto vazio (tem que ser fora para não ser zerado sempre que chamar um novo)
 
+function mostrarErro(mensagem){
+  const error = document.getElementById("errorMessage");
+  error.textContent = mensagem;
+
+  error.classList.remove("hide");
+  error.classList.add("show");
+  
+  void  error.offsetWidth;
+
+  error.classList.add("show");
+
+  setTimeout(() => {
+    error.classList.remove("show");
+    error.classList.add("hide");
+  }, 2500);
+}
+
 async function buscarPokemon() {
   try{
     const pokemonName = document.getElementById("pokeInput").value.toLowerCase();
@@ -27,7 +44,7 @@ async function buscarPokemon() {
 
     // verifica se está duplicado
     if (pokemonsAtivos.has(pokemonName)){
-      alert("Esse pokémon já está na lista!");
+      mostrarErro("Esse pokémon já tem um card!");
       return;
     }
 
