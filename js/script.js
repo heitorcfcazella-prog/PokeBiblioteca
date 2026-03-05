@@ -10,9 +10,9 @@ Feito:
 8. Implementar botão de deleteAll
 9. Implementar tradução de tipos (inglês => port)
 10. Implementação de melhor interface mobile
+11. Ajustar interface e animações
 A fazer: 
 
-11. Ajustar interface e animações
 */
 
 import colorType from "../data/colorType.json" with { type: "json"};
@@ -39,13 +39,8 @@ function mostrarErro(mensagem){
 
 // Animação de entrada e saída da mainArea
 const mainArea = document.getElementById("mainArea");
-const btnAbrir = document.getElementById("mostrarCard");
 const btnCloseAll = document.getElementById("btnCloseAll");
 const container = document.getElementById("cardsContainer");
-
-btnAbrir.addEventListener("click", () => {
-  mainArea.classList.add("active");
-});
 
 btnCloseAll.addEventListener("click", () => {
   container.innerHTML = "";
@@ -67,12 +62,11 @@ async function buscarPokemon() {
     const resposta1 = await fetch(`https://pokeapi.deno.dev/pokemon/${pokemonName}`);
     const resposta2 = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
 
-    if(!resposta1.ok){
-      throw new Error ("Pokémon não encontado na primeira API");
+    if(!resposta1.ok || !resposta2.ok){
+      throw new Error ("Pokémon não encontado");
     }
-    if(!resposta2.ok){
-      throw new Error ("Pokémon não encontado na segunda API")
-    }
+    mainArea.classList.add("active");
+    
   
     const dadosGerais = await resposta1.json();
     const alturaEPeso = await resposta2.json();
