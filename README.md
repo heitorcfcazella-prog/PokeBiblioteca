@@ -18,3 +18,29 @@ Aplicação web que busca e apresenta informações de pokémons utilizando APIs
 - PokéAPI (Para altura e peso);
 
 ## Demonstração: 
+
+![gif de demonstração](assets/PokeBiblioteca%20—%20Mozilla%20Firefox%202026-03-05%2010-39-13.gif)
+
+## Como visualizar e modificar
+
+### Acessar a aplicação
+Você pode testar a aplicação online através do deploy no **Vercel**:
+
+https://poke-biblioteca.vercel.app/
+
+### Clonar o repositório
+
+```bash
+git clone https://github.com/heitorcfcazella-prog/PokeBiblioteca.git
+```
+### Abrir o projeto
+1. Entre na pasta principal
+2. Abra o arquivo `index.html`
+
+## Aprendizados
+
+- Consumo de APIs com JavaScript
+- Manipulação dinâmica do DOM
+- Animações CSS
+- Responsividade mobile-first
+- Tratamento de erros na interface
